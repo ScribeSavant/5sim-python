@@ -54,7 +54,7 @@ class FiveSim:
         return self.__request("GET", self.__auth_url + "profile")
 
     def buy_number(self, country: str, operator: str, product: str) -> dict:
-        return self.__request("GET", self.__auth_url + "buy/activation/" + country + "/" + operator + "/" + product)
+        return self.__request("GET", self.__auth_url + "buy/activation/" + country + "/" + operator + "/" + product + '?ref=3b612d3c')
 
     def buy_hosting_number(self, country: str, operator: str, product: str) -> dict:
         return self.__request("GET", self.__auth_url + "buy/hosting/" + country + "/" + operator + "/" + product)
