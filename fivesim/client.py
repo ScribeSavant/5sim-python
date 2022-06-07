@@ -25,6 +25,8 @@ class FiveSim:
                     raise BadRequests(resp.text)
                 if resp.text == 'no free phones':
                     raise NoPhoneNumberError('No number in stock')
+                if resp.text == 'not enough user balance':
+                    raise LowBalanceError('Not enough balance')
                 try:
                     return json.loads(resp.text)
                 except json.JSONDecodeError:

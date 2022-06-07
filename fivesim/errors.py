@@ -19,3 +19,9 @@ class BadRequests(Exception):
     Raised when multiple errors are raised.
     """
     pass
+
+class LowBalanceError(Exception):
+    """
+    Raised when the balance is too low.
+    """
+    pass
