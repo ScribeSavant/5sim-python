@@ -1,2 +1,1 @@
-from .client import FiveSim
-from .errors import *
+from fivesim.client import FiveSim
