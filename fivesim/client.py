@@ -6,7 +6,7 @@ from fivesim.errors import *
 class FiveSim:
     def __init__(self, api_key, proxy):
         self.__api_key = api_key
-        slef.__proxy = proxy
+        self.__proxy = proxy
         self.__session = requests.Session()
         self.__auth_url: str = "https://5sim.net/v1/user/"
         self.__guest_url: str = "https://5sim.net/v1/guest/"
@@ -19,7 +19,7 @@ class FiveSim:
     def __request(self, method, url):
         try:
             if method == "GET":
-                resp = self.__session.get(url, proxies=slef.__proxy)
+                resp = self.__session.get(url, proxies=self.__proxy)
                 if resp.status_code == 401:
                     raise ApiKeyInvalidError
                 if resp.status_code == 400:
