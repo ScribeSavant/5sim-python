@@ -10,13 +10,13 @@ classifiers = [
 
 setup(
     name='5sim-python',
-    version='1.0.3',
+    version='1.0.4',
     description='A simple Python API for 5sim.net',
     long_description=open('README.md').read() + '\n\n',
     long_description_content_type='text/markdown',
-    url='https://github.com/squirrelpython/5sim-python',
-    author='Emrecan Ayas',
-    author_email='emrecanayas06@gmail.com',
+    url='https://github.com/scribesavant/5sim-python',
+    author='scribesavant',
+    author_email='scribesavant@gmail.com',
     license='MIT',
     classifiers=classifiers,
     keywords='api 5sim',

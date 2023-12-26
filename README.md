@@ -11,7 +11,7 @@ Before proceeding, you should register an account on [5sim.net](https://5sim.net
 Install from source:
 
 ``` bash
-pip install git+https://github.com/squirrelpython/5sim-python.git
+pip install git+https://github.com/scribesavant/5sim-python.git
 ```
 
 Alternatively, install from [PyPI](https://pypi.org/project/5sim-python/):
@@ -27,9 +27,14 @@ pip install 5sim-python
 from fivesim import FiveSim
 
 # These example values won't work. You must get your own api_key
-API_KEY = 'ey.............' 
+API_KEY = 'ey.............'
 
-client = FiveSim(API_KEY) 
+proxies = {
+   'http': 'http://proxy.example.com:8080',
+   'https': 'http://secureproxy.example.com:8090',
+}
+
+client = FiveSim(API_KEY, proxies) # Optional proxy 
 ```
 #
 ### Endpoints
@@ -88,4 +93,4 @@ client.ban_order(order_id='12345678') # Cancel the order if banned from the serv
 client.sms_inbox_list(order_id='12345678') # Get SMS inbox list by order's id.
 ```
 
-Powered by [SquirrelPython](https://github.com/squirrelpython).
+Powered by [ScribeSavant](https://github.com/scribesavant).
