@@ -4,7 +4,7 @@ from fivesim.errors import *
 
 
 class FiveSim:
-    def __init__(self, api_key, proxy):
+    def __init__(self, api_key, proxy=None):
         self.__api_key = api_key
         self.__proxy = proxy
         self.__session = requests.Session()
@@ -19,19 +19,22 @@ class FiveSim:
     def __request(self, method, url):
         try:
             if method == "GET":
+              if (self.__proxy == None):
+                resp = self.__session.get(url)
+              else:
                 resp = self.__session.get(url, proxies=self.__proxy)
-                if resp.status_code == 401:
-                    raise ApiKeyInvalidError
-                if resp.status_code == 400:
-                    raise BadRequests(resp.text)
-                if resp.text == "no free phones":
-                    raise NoPhoneNumberError("No number in stock")
-                if resp.text == "not enough user balance":
-                    raise LowBalanceError("Not enough balance")
-                try:
-                    return json.loads(resp.text)
-                except json.JSONDecodeError:
-                    return resp.text
+              if resp.status_code == 401:
+                  raise ApiKeyInvalidError
+              if resp.status_code == 400:
+                  raise BadRequests(resp.text)
+              if resp.text == "no free phones":
+                  raise NoPhoneNumberError("No number in stock")
+              if resp.text == "not enough user balance":
+                  raise LowBalanceError("Not enough balance")
+              try:
+                  return json.loads(resp.text)
+              except json.JSONDecodeError:
+                  return resp.text
         except Exception as e:
             raise e
 
